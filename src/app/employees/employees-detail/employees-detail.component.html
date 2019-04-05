@@ -1,0 +1,13 @@
+
+
+<h2 style="text-align:center">Employee Profile </h2>
+Employee Name:<a ><i><h3>{{this.empService.employee.firstname}}</h3></i></a>
+<div class="card ">
+    <span><img  [src]="this.empService.employee.image"  style="max-height:400px ; " style="max-width: 400px;"  alt="{this.empService.{employee.firstname}}"></span>
+  <div style="margin: 24px 0;">
+   Lastname :<a ><i><h3>{{this.empService.employee.lastname}}</h3></i></a> <br>
+Age:<a ><i>{{this.empService.employee.age}}</i></a>  <br>
+Position:<a ><i>{{this.empService.employee.position}}</i></a>  
+  </div>
+</div>
+<button class="btn btn-outline-danger btn-ms" (click)="cancel()">Back To Customers List</button>

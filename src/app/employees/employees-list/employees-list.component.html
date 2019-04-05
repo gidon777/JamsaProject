@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="form-inline my-2 my-lg-0">
+   
+        <input class="form-control mr-sm-2" type="search" placeholder="Search Employee " [(ngModel)]="searchTerm"  aria-label="Search" >  &nbsp; &nbsp;  <span class="glyphicon glyphicon-search"></span>
+        &nbsp; &nbsp;  <button class="btn btn-outline-primary my-2 my-sm-0" type="button" (click)=" empService.moveToEmployeeCreate()">Create Employee <span class="glyphicon glyphicon-plus"></span>  </button> 
+    </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">FIRSTNAME</th>
+        <th scope="col">LASTNAME</th>
+        <th scope="col">AGE</th>
+        <th scope="col">POSITION</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of this.empService.employees | employeesFilter:searchTerm">
+        <td>{{employee.firstname}}</td>
+        <td>{{employee.lastname}}</td>
+        <td>{{employee.age}}</td>
+        <td>{{employee.position}}</td>
+        <td>  <button class="btn btn-outline-success btn-sm" (click)="empService.moveToEmployeeDetail(employee.id)">Show Detail</button></td>
+        <td>  <button class="btn btn-outline-primary btn-sm" (click)="empService.moveToEmployeeUpdate(employee) ">Edit Employee</button></td>
+        <td>  <button class="btn btn-outline-danger btn-sm" (click)="deleteEmployee(employee.id)" >Delete Employee</button></td>
+      
+  
+      </tr>
+</tbody>
+</table>
+</div>

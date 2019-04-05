@@ -1,0 +1,48 @@
+<div class="row">
+    <form [formGroup]="this.empService.form" (ngSubmit)="this.onSubmit()">
+      <input type="hidden" formControlName="id">
+      <div class="form-group">
+        <input type="text" formControlName="firstname" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.firstname.errors}" placeholder="Name">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.firstname.errors">this field is required</div>
+      </div>
+      <div class="form-group">
+        <input type="email" formControlName="lastname" class="form-control"  [ngClass]="{'is-invalid':submitted && formControls.lastname.errors}"  placeholder="Lastname">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.lastname.errors">
+          <label *ngIf="formControls.lastname.errors.required">this field is required</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="age" class="form-control"  [ngClass]="{'is-invalid':submitted && formControls.age.errors}"  placeholder="Age">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.age.errors">
+          <label *ngIf="formControls.age.errors.required">this field is required</label>
+          <label *ngIf="formControls.age.errors?.max">Maximum number can be 120.</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="position" class="form-control"  [ngClass]="{'is-invalid':submitted && formControls.position.errors}"  placeholder="Postion">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.position.errors">this field is required</div>
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="image" class="form-control" #image  [ngClass]="{'is-invalid':submitted && formControls.image.errors}"  placeholder="Image">
+        <div class="invalid-feedback" *ngIf="submitted && formControls.image.errors">this field is required</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="image.value" class="img-responsive"  style="max-height: 200px;">
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="submit"  class="btn btn-outline-primary btn-md" value="Submit" style="margin-right:5px;">
+        <button class="btn btn-outline-danger btn-md" (click)="cancel()">Cancel</button>
+      </div>
+      
+    </form>
+    <div class="col-xs-12">
+      <div class="alert alert-info" *ngIf="ShowSuccessMessageCreate">Customer Create Successfully!</div>
+    </div>
+    <br>
+    <div class="col-xs-12">
+      <div class="alert alert-info" *ngIf="ShowSuccessMessageUpdate">Customer Updated Successfully!</div>
+    </div>
+    </div>
+    
